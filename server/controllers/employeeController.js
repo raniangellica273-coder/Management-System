@@ -19,7 +19,7 @@ const upload = multer({storage: storage})
 const addEmployee = async (req, res) => {
     try {
 
-    }
+    
     const {
         name, 
         email,
@@ -38,11 +38,11 @@ const addEmployee = async (req, res) => {
     if(user) {
         return res.status(400).json({success: false, error: "user already registered in emp"});
     }
-    const hashPassword = await bcrypt.hashPassword(password, 10)
+    const hashPassword = await bcrypt.hash(password, 10)
     const newUser = new User ({
         name,
         email,
-        password,
+        password: hashPassword,
         role,
         profileImage: req.file ? req.file.filename : ""
     })
@@ -60,9 +60,16 @@ const addEmployee = async (req, res) => {
     })
 
     await newEmployee.save()
-    return 
+    return res.status(201).json({success: true, message: "Employee added successfully"})
 
+} catch (error) {
+    console.error(error);
+
+    return res.status(500).json({
+      success: false,
+      error: "Server error",
+    });
 }
-
+}
 
 export {addEmployee, upload}
