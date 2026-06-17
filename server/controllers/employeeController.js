@@ -3,6 +3,7 @@ import Employee from "../models/Employee.js"
 import User from "../models/User.js"
 import bcrypt from 'bcrypt'
 import path from "path"
+import Department from '../models/Department.js'
 
 
 const storage = multer.diskStorage({
@@ -99,4 +100,28 @@ const getEmployee = async (req, res) => {
     }
 }
 
-export {addEmployee, upload, getEmployees, getEmployee}
+const updateEmployee = async (req, res) => {
+    try {
+        const {id} = req.params;
+        const {
+        name,  
+        maritalStatus,
+        designation,
+        department,
+        salary,
+    } = req.body;
+    const employee = await Employee.findById({_id: id})
+    if(!employee) {
+        return res.status(404).json({success: false, error: "employee not found"})
+    }
+
+    const user = await User.findById({_id: employee.userId})
+
+    
+    }catch(error) {
+        return res.status(500).json({success: false, error: "update employees server error"})
+    }
+
+}
+
+export {addEmployee, upload, getEmployees, getEmployee, updateEmployee}

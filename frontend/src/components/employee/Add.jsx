@@ -27,7 +27,6 @@ const handleChange = (e) => {
 
 const handleSubmit = async (e) => {
     e.preventDefault()
-
     console.log(formData);
 
     const formDataObj = new FormData()
@@ -36,7 +35,7 @@ const handleSubmit = async (e) => {
     })
 
     try {
-      const response = await axios.post('http://localhost:5000/api/employee/add', formDataObj, {
+      const response = await axios.put(`http://localhost:5000/api/employee/${id}`, employee, {
         headers: {
           "Authorization" : `Bearer ${localStorage.getItem('token')}`
         }
@@ -254,7 +253,7 @@ const handleSubmit = async (e) => {
             type='submit'
             className='w-full mt-6 bg-indigo-700 hover:bg-indigo-500 text-white font-bold py-2 px-4 rounded-md'
             >
-                Add Employee
+                Edit Employee
             </button> 
       </form>
     </div>
