@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import { columns } from '../../utils/EmployeeHelper'
+import { columns, EmployeeButtons } from '../../utils/EmployeeHelper'
 import DataTable from 'react-data-table-component'
 import axios from 'axios'
 
@@ -30,7 +30,7 @@ const List = () => {
                 name: emp.userId.name,
                 dob: emp.dob,
                 image: emp.userId.profileImage,
-                //action: (<DepartmentButtons id={emp._id} onDepartmentDelete={onDepartmentDelete}/>),
+                action: (<EmployeeButtons id={emp._id} />),
               }
               
             ));

@@ -54,7 +54,7 @@ const View = () => {
         <div className='flex space-x-3 mb-5'>
             <p className='text-lg font-bold'>Date of Birth</p>
             <p className='font-medium'>
-                {new Data(employee.dob).toLocalDateString()}</p>
+                {new Date(employee.dob).toLocaleDateString()}</p>
         </div>
 
         <div className='flex space-x-3 mb-5'>
