@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import { fetchDepartment } from '../../utils/EmployeeHelper';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const Add = () => {
     const [departments, setDepartments] = useState([])
     const [formData, setFromData] = useState({})
-
+    const navigate = useNavigate()
 
     useEffect(() => {
         const getDepartment = async () => {
@@ -16,16 +17,18 @@ const Add = () => {
 }, []);
 
 const handleChange = (e) => {
-    const {name, value, files} = e.target
+    const {name, value, files} = e.target;
     if(name === "image") {
         setFromData((prevData) => ({...prevData, [name] : files[0]}))
     }else {
-        setFromData((prevData) => ({...prevData, [name] : value[0]}))
+        setFromData((prevData) => ({...prevData, [name] : value}))
     }
 }
 
 const handleSubmit = async (e) => {
     e.preventDefault()
+
+    console.log(formData);
 
     const formDataObj = new FormData()
     Object.keys(formData).forEach((key) => {
@@ -44,7 +47,7 @@ const handleSubmit = async (e) => {
 
     } catch(error) {
       if(error.response && !error.response.data.success) {
-        alert(error.response.data.response)
+        alert(error.response.data.error)
       }
     }
 }
@@ -146,7 +149,7 @@ const handleSubmit = async (e) => {
                     required
                     >
                     <option value="">Select Status</option>
-                    <option value="sigle">Single</option>
+                    <option value="single">Single</option>
                     <option value="married">Married</option>
                 </select>
             </div>
@@ -154,13 +157,13 @@ const handleSubmit = async (e) => {
             {/* Destignation */}
             <div>
                 <label className='block text-sm font-medium text-gray-700'>
-                    Destignation
+                    Designation
                 </label>
                 <input 
                 type="text" 
-                name='destignation'
+                name='designation'
                 onChange={handleChange}
-                placeholder='Destignation'
+                placeholder='Designation'
                 className='mt-1 p-2 block w-full border border-gray-300 rounded-md'
                 required
                 />
@@ -172,7 +175,7 @@ const handleSubmit = async (e) => {
                     Department
                 </label>
                 <select 
-                name="dep_name" 
+                name="department" 
                 onChange={handleChange}
                 className='mt-1 p-2 block w-full border border-gray-300 rounded-md'
                 required
@@ -187,7 +190,7 @@ const handleSubmit = async (e) => {
             {/*SALARY */}
             <div>
                 <label className='block text-sm font-medium text-gray-700'>
-                    Date of Birth
+                    Salary
                 </label>
                 <input 
                 type="number" 

@@ -39,7 +39,7 @@ const Login = () => {
   return (
     <div className="shadow-x1 flex flex-col items-center h-screen justify-center bg-white from-teal-600 from-50% to-gray-100 to-50% space-y-6">
       
-      <h2 className="font-sevillana text-3xl text-cyan-600 font-bold">Login Management System</h2>
+      <h2 className="font-sevillana text-3xl text-cyan-600 font-bold">Management System</h2>
       <div className="shadow-2xl p-6 w-80 rounded-2xl bg-cyan-100">
       <h2 className="text-2xl font-bold mb-4 text-center">Login</h2>
       {error && <p className="text-red-500">{error}</p>}

@@ -1,6 +1,6 @@
 import multer, { diskStorage } from "multer"
-import Employee from "../models/Employee"
-import User from "../models/User"
+import Employee from "../models/Employee.js"
+import User from "../models/User.js"
 import bcrypt from 'bcrypt'
 import path from "path"
 
@@ -60,16 +60,43 @@ const addEmployee = async (req, res) => {
     })
 
     await newEmployee.save()
-    return res.status(201).json({success: true, message: "Employee added successfully"})
+    return res.status(200).json({success: true, message: "employee created"})
 
-} catch (error) {
-    console.error(error);
+}catch(error) {
+    console.log("ERROR DETAIL:");
+    console.log(error.message);
 
-    return res.status(500).json({
-      success: false,
-      error: "Server error",
-    });
+    if (error.errors) {
+        Object.keys(error.errors).forEach(key => {
+            console.log(
+                key,
+                error.errors[key].message
+            );
+        });
+    }
+
+    return res.status(500).json({success: false, error: "server error in adding employee"})
 }
+
 }
 
-export {addEmployee, upload}
+const getEmployees = async (req, res) => {
+    try {
+        const employees =  await Employee.find().populate('userId').populate("department")
+        return res.status(200).json({success: true, employees})
+    }catch(error) {
+        return res.status(500).json({success: false, error: "get employees server error"})
+    }
+}
+
+const getEmployee = async (req, res) => {
+    const {id} = req.params;
+    try {
+        const employee =  await Employee.findById({_id: id}).populate('userId', {password: 0}).populate("department")
+        return res.status(200).json({success: true, employee})
+    }catch(error) {
+        return res.status(500).json({success: false, error: "get employees server error"})
+    }
+}
+
+export {addEmployee, upload, getEmployees, getEmployee}
