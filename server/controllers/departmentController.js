@@ -36,7 +36,7 @@ const editDepartment = async (req, res) => {
     }
 }
 
-const gettDepartment = async (req, res) => {
+const getDepartment = async (req, res) => {
     try {
         const { id } = req.params;
         const department = await Department.findById({_id: id})
@@ -71,4 +71,4 @@ const deleteDepartment = async (req, res) => {
 }
   
 
-export {addDepartment, getDepartments, editDepartment, gettDepartment, updateDepartment, deleteDepartment}
+export {addDepartment, getDepartments, editDepartment, getDepartment, updateDepartment, deleteDepartment}

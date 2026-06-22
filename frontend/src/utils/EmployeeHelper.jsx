@@ -17,10 +17,9 @@ export const columns = [
     {
       name: "Profile",
         cell: (row) => {
-          console.log(row.profileImage)
           return (
           <img
-            src={`http://localhost:5000/uploads/${row.profileImage}`}
+            src={`http://localhost:5000/uploads/${row.image}`}
             alt="Profile"
             className="w-10 h-10 rounded-full"
           />

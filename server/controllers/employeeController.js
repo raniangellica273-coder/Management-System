@@ -19,8 +19,7 @@ const upload = multer({storage: storage})
 
 const addEmployee = async (req, res) => {
     try {
-
-    
+ 
     const {
         name, 
         email,
@@ -103,6 +102,7 @@ const getEmployee = async (req, res) => {
 const updateEmployee = async (req, res) => {
     try {
         const {id} = req.params;
+
         const {
         name,  
         maritalStatus,
@@ -110,15 +110,34 @@ const updateEmployee = async (req, res) => {
         department,
         salary,
     } = req.body;
-    const employee = await Employee.findById({_id: id})
+
+    const employee = await Employee.findById(id);
+
     if(!employee) {
         return res.status(404).json({success: false, error: "employee not found"})
     }
 
-    const user = await User.findById({_id: employee.userId})
+    await Employee.findByIdAndUpdate(id, {
+        maritalStatus,
+        designation,
+        department,
+        salary
+    })
 
-    
+    await User.findByIdAndUpdate(employee.userId, {
+        name
+    })
+
+    return res.status(200).json({
+        success: true,
+        message: 'Employee updated successfully'
+    });
+
+    //const user = await User.findById({_id: employee.userId})
+
     }catch(error) {
+        console.log(error);
+
         return res.status(500).json({success: false, error: "update employees server error"})
     }
 

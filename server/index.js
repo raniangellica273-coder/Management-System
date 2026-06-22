@@ -20,9 +20,7 @@ app.get("/test", (req, res) => {
 app.use('/api/auth', authRouter)
 app.use('/api/department', departmentRouter)
 app.use('/api/employee', employeeRouter)
-app.use(
-  "/uploads",
-  express.static(path.join(__dirname, "public", "uploads")))
+app.use("/uploads", express.static(path.join(__dirname, "public", "uploads")))
 
 app.get("/test", (req, res) => {
   res.send("SERVER TEST BERHASIL");

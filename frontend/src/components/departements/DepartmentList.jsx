@@ -61,36 +61,117 @@ const DepartmentList = () => {
   }
 
   return (
-    <>{depLoading ? <div>Loading ...</div> : 
-    <div className="p-5">
-      <div className="text-center">
-        <h3 className="text-2xl font-bold">Manage Departments</h3>
+  <>
+    {depLoading ? (
+      <div className="flex justify-center items-center h-[60vh]">
+        <div className="text-lg font-semibold text-slate-500">
+          Loading...
+        </div>
       </div>
+    ) : (
+      <div className="p-4 md:p-8 bg-slate-50 min-h-screen">
 
-      <div className="flex justify-between items-center">
-        <input
-          type="text"
-          placeholder="Search By Dep Name"
-          className="px-4 py-0.5 bg-indigo-100 border-indigo-100 shadow-2xl rounded"
-          onChange={filterDepartments}
-        />
+        {/* Header */}
+        <div className="mb-8">
+          <h1 className="text-3xl md:text-4xl font-bold text-slate-800">
+            Departments
+          </h1>
 
-        <Link
-          to="/admin-dashboard/add-department"
-          className="px-4 py-1 bg-indigo-700 text-white rounded">
-          Add New Department
-        </Link>
+          <p className="text-slate-500 mt-2">
+            Manage and organize company departments.
+          </p>
+        </div>
+
+        {/* Summary Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-8">
+          <div className="bg-white rounded-2xl shadow-sm p-5">
+            <p className="text-slate-500">Total Departments</p>
+            <h2 className="text-3xl font-bold text-indigo-600">
+              {filteredDepartments.length}
+            </h2>
+          </div>
+
+          <div className="bg-white rounded-2xl shadow-sm p-5">
+            <p className="text-slate-500">Active Departments</p>
+            <h2 className="text-3xl font-bold text-green-600">
+              {filteredDepartments.length}
+            </h2>
+          </div>
+
+          <div className="bg-white rounded-2xl shadow-sm p-5">
+            <p className="text-slate-500">Status</p>
+            <h2 className="text-3xl font-bold text-cyan-600">
+              Active
+            </h2>
+          </div>
+        </div>
+
+        {/* Search & Button */}
+        <div className="bg-white rounded-3xl shadow-sm p-6">
+
+          <div className="
+            flex
+            flex-col
+            md:flex-row
+            justify-between
+            items-center
+            gap-4
+            mb-6
+          ">
+            <input
+              type="text"
+              placeholder="Search department..."
+              className="
+                w-full
+                md:w-96
+                px-4
+                py-3
+                border
+                border-slate-200
+                rounded-xl
+                focus:ring-2
+                focus:ring-indigo-500
+                outline-none
+              "
+              onChange={filterDepartments}
+            />
+
+            <Link
+              to="/admin-dashboard/add-department"
+              className="
+                w-full
+                md:w-auto
+                bg-indigo-600
+                hover:bg-indigo-700
+                text-white
+                px-6
+                py-3
+                rounded-xl
+                font-semibold
+                shadow-md
+                transition
+              "
+            >
+              + Add Department
+            </Link>
+          </div>
+
+          {/* Table */}
+          <div className="overflow-x-auto rounded-2xl">
+            <DataTable
+              columns={columns}
+              data={filteredDepartments}
+              pagination
+              highlightOnHover
+              responsive
+            />
+          </div>
+
+        </div>
       </div>
-
-      <div className="mt-5">
-      <DataTable
-        columns={columns} 
-        data={filteredDepartments}
-      />
-      </div>
-    </div>
-    }</>
-  );
+    )}
+  </>
+);
 };
 
 export default DepartmentList;

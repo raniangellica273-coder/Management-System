@@ -7,7 +7,7 @@ import axios from 'axios'
 
 const List = () => {
   const [employees, setEmployees] = useState([])
-  const [empLoadinng, setEmpLoading] = useState(false)
+  const [empLoading, setEmpLoading] = useState(false)
 
  useEffect(() => {
     const fetchEmployees = async () => {
@@ -50,34 +50,67 @@ const List = () => {
   }, []);
 
   return (
-    <div className='p-6' >
-      <div className="text-center">
-        <h3 className="text-2xl font-bold">Manage Employee</h3>
+    <div className='p-4 md:p-6'>
+      <div className="mb-6">
+        <h2 className="text-2xl font-bold text-gray-800">Manage Employee</h2>
+      <p className='text-gray-500 mt-1'>Manage all Employee here</p>
       </div>
 
-      <div className="flex justify-between items-center">
+      <div className="bg-white rounded-xl shadow-md p-4 mb-6">
+        <div className='flex flex-col md:flex-row gap-4 md:items-center md:justify-between'>
+
         <input
           type="text"
           placeholder="Search By Dep Name"
-          className="px-4 py-0.5 bg-indigo-100 border-indigo-100 shadow-2xl rounded"
+          className="
+                w-full
+                md:w-96
+                px-4
+                py-3
+                border
+                border-slate-200
+                rounded-xl
+                focus:ring-2
+                focus:ring-indigo-500
+                outline-none
+              "
         />
 
         <Link
           to="/admin-dashboard/add-employee"
-          className="px-4 py-1 bg-indigo-700 text-white rounded">
-          Add New Employee
+          className="px-5 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 shadow transition duration-300 text-center">
+          + Add New Employee
         </Link>
       </div>
+      </div>
 
-      <div className="mt-5">
+      <div className="bg-white rounded-xl shadow-md overflow-hidden">
       <DataTable
         columns={columns} 
         data={employees}
         pagination
-        progressPending={empLoadinng}
+        responsive
+        highlightOnHover
+        striped
+        progressPending={empLoading}
+        customStyles={{
+          headRow: {
+            style: {
+              backgroundColor: "#EEEF2FF",
+              fontWeight: "bold",
+              fontSize: "15px",
+              minHeight: "60px",
+            },
+          },
+          rows: {
+            style: {
+              minHeight: "65px",
+            },
+          },
+        }}
       />
-      </div>
     </div>
+  </div>
   )
 }
 

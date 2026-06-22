@@ -7,6 +7,19 @@ const Add = () => {
     const [departments, setDepartments] = useState([])
     const [formData, setFromData] = useState({})
     const navigate = useNavigate()
+    const [employee, setEmployee] = useState({
+        name: '', 
+        email: '',
+        employeeId: '',
+        dob: '',
+        gender: '', 
+        maritalStatus: '',
+        designation: '',
+        department: '',
+        salary: '',
+        password: '',
+        role: ''
+    })
 
     useEffect(() => {
         const getDepartment = async () => {
@@ -35,7 +48,7 @@ const handleSubmit = async (e) => {
     })
 
     try {
-      const response = await axios.put(`http://localhost:5000/api/employee/${id}`, employee, {
+      const response = await axios.post(`http://localhost:5000/api/employee/add`, employee, {
         headers: {
           "Authorization" : `Bearer ${localStorage.getItem('token')}`
         }
@@ -45,6 +58,10 @@ const handleSubmit = async (e) => {
       }
 
     } catch(error) {
+        console.log(error)
+        console.log(error.response)
+        console.log(error.response?.data)
+
       if(error.response && !error.response.data.success) {
         alert(error.response.data.error)
       }
@@ -253,7 +270,7 @@ const handleSubmit = async (e) => {
             type='submit'
             className='w-full mt-6 bg-indigo-700 hover:bg-indigo-500 text-white font-bold py-2 px-4 rounded-md'
             >
-                Edit Employee
+                Add Employee
             </button> 
       </form>
     </div>

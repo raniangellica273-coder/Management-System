@@ -41,7 +41,7 @@ const Edit = () => {
             maritalStatus: employee.maritalStatus,
             designation: employee.designation,
             salary: employee.salary,
-            department: employee.department
+            department: employee.department._id
         }));
         }
       }catch(error) {
@@ -64,7 +64,7 @@ const handleSubmit = async (e) => {
     e.preventDefault()
 
     try {
-      const response = await axios.put('http://localhost:5000/api/employee/add', formDataObj, {
+      const response = await axios.put(`http://localhost:5000/api/employee/${id}`, employee, {
         headers: {
           "Authorization" : `Bearer ${localStorage.getItem('token')}`
         }
@@ -178,7 +178,7 @@ const handleSubmit = async (e) => {
             type='submit'
             className='w-full mt-6 bg-indigo-700 hover:bg-indigo-500 text-white font-bold py-2 px-4 rounded-md'
             >
-                Add Employee
+                Edit Employee
             </button> 
       </form>
     </div>

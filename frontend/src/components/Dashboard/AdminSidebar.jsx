@@ -12,40 +12,72 @@ import {
 
 function AdminSidebar() {
   return (
-    <div className="bg-blue-950 text-white h-screen fixed left-0 top-0 bottom-0 space-y-2 w-64">
-      <div className="bg-indigo-700 h-12 flex items-center justify-center">
-        <h3 className="text-2xl font-semibold">Employee MS</h3>
+    <div className="w-80 bg-slate-900 text-white min-h-screen">
+      <div className="px-6 py-8 border-b border-slate-800">
+        <h1 className="text-3xl font-extrabold text-white">Employee Management System</h1>
       </div>
       <div>
         <NavLink
-          to="/admin-dashboard"
-          className={({isActive}) => `${isActive ? "bg-indigo-300" : ""} flex items-center space-x-4 py-2.5 px-4 rounded-xl`}
-          end>
-          <FaTachometerAlt />
-          <span>Dasboard</span>
+          to="/admin-dashboard" end
+          className={({ isActive }) =>
+            `flex items-center gap-3 px-5 py-3 mx-3 rounded-xl transition-all duration-300 ${
+              isActive
+                ? "bg-indigo-600 text-white shadow-lg"
+                : "text-slate-300 hover:bg-slate-800 hover:text-white"
+            }`
+          }>
+          <FaBuilding />
+          <span>Dashboard</span>
         </NavLink>
+
         <NavLink
           to="/admin-dashboard/employee"
-          className={({isActive}) => `${isActive ? "bg-indigo-300" : ""} flex items-center space-x-4 py-2.5 px-4 rounded-xl`}
-          end>
+          className={({ isActive }) =>
+            `flex items-center gap-3 px-5 py-3 mx-3 rounded-xl transition-all duration-300 ${
+              isActive
+                ? "bg-indigo-600 text-white shadow-lg"
+                : "text-slate-300 hover:bg-slate-800 hover:text-white"
+            }`
+          }>
           <FaUsers />
           <span>Employee</span>
         </NavLink>
-        <NavLink 
+
+        <NavLink
           to="/admin-dashboard/departments"
-          className={({isActive}) => `${isActive ? "bg-indigo-300" : ""} flex items-center space-x-4 py-2.5 px-4 rounded-xl`}>
+          className={({ isActive }) =>
+            `flex items-center gap-3 px-5 py-3 mx-3 rounded-xl transition-all duration-300 ${
+              isActive
+                ? "bg-indigo-600 text-white shadow-lg"
+                : "text-slate-300 hover:bg-slate-800 hover:text-white"
+            }`
+          }>
           <FaBuilding />
           <span>Departments</span>
         </NavLink>
+
         <NavLink
-          to="/admin-dashboard"
-          className="flex items-center space-x-4 py-2.5 px-4 rounded">
+          to="/admin-dashboard/Leave"
+          className={({ isActive }) =>
+            `flex items-center gap-3 px-5 py-3 mx-3 rounded-xl transition-all duration-300 ${
+              isActive
+                ? "bg-indigo-600 text-white shadow-lg"
+                : "text-slate-300 hover:bg-slate-800 hover:text-white"
+            }`
+          }>
           <FaCalendarAlt />
           <span>Leave</span>
         </NavLink>
+
         <NavLink
-          to="/admin-dashboard"
-          className="flex items-center space-x-4 py-2.5 px-4 rounded">
+          to="/admin-dashboard/settings"
+          className={({ isActive }) =>
+            `flex items-center gap-3 px-5 py-3 mx-3 rounded-xl transition-all duration-300 ${
+              isActive
+                ? "bg-indigo-600 text-white shadow-lg"
+                : "text-slate-300 hover:bg-slate-800 hover:text-white"
+            }`
+          }>
           <FaCogs />
           <span>Settings</span>
         </NavLink>
