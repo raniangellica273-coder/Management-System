@@ -8,6 +8,8 @@ import axios from 'axios'
 const List = () => {
   const [employees, setEmployees] = useState([])
   const [empLoading, setEmpLoading] = useState(false)
+  const [filteredEmployees, setFilteredEmployees] = useState([])
+  const [search, setSearch] = useState("")
 
  useEffect(() => {
     const fetchEmployees = async () => {
@@ -21,7 +23,6 @@ const List = () => {
         })
         if(response.data.success) {
           let sno = 1;
-          console.log(response.data)
             const data = response.data.employees.map((emp) => (
               {
                 _id: emp._id, 
@@ -34,8 +35,9 @@ const List = () => {
               }
               
             ));
-            console.log(response.data.employees[0].userId)
+            //console.log(response.data.employees[0].userId)
             setEmployees(data);
+            setFilteredEmployees(data);
         }
       }catch(error) {
          if(error.response && !error.response.data.success) {
@@ -49,8 +51,22 @@ const List = () => {
 
   }, []);
 
+  const handleChange = (e) => {
+    const value = e.target.value
+ 
+    setSearch(value)
+
+  const records = employees.filter((emp) =>
+    emp.name?.toLowerCase().includes(value.toLowerCase())
+    );
+    setFilteredEmployees(records)
+};
+
+
+
   return (
-    <div className='p-4 md:p-6'>
+    <div className='md:p-6 border  border-slate-200 mt-4
+      mx-6 items-center justify-between rounded-2xl p-6 shadow-md'>
       <div className="mb-6">
         <h2 className="text-2xl font-bold text-gray-800">Manage Employee</h2>
       <p className='text-gray-500 mt-1'>Manage all Employee here</p>
@@ -61,6 +77,7 @@ const List = () => {
 
         <input
           type="text"
+          onChange={handleChange}
           placeholder="Search By Dep Name"
           className="
                 w-full
@@ -74,6 +91,7 @@ const List = () => {
                 focus:ring-indigo-500
                 outline-none
               "
+          
         />
 
         <Link
@@ -87,7 +105,7 @@ const List = () => {
       <div className="bg-white rounded-xl shadow-md overflow-hidden">
       <DataTable
         columns={columns} 
-        data={employees}
+        data={filteredEmployees}
         pagination
         responsive
         highlightOnHover

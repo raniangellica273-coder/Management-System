@@ -37,52 +37,101 @@ const Login = () => {
   }
 
   return (
-    <div className="shadow-x1 flex flex-col items-center h-screen justify-center bg-white from-teal-600 from-50% to-gray-100 to-50% space-y-6">
-      
-      <h2 className="font-sevillana text-3xl text-cyan-600 font-bold">Management System</h2>
-      <div className="shadow-2xl p-6 w-80 rounded-2xl bg-cyan-100">
-      <h2 className="text-2xl font-bold mb-4 text-center">Login</h2>
-      {error && <p className="text-red-500">{error}</p>}
-      <form onSubmit={handleSubmit}>
-        <div className="mb-4">
-          <label htmlFor="email" className="block text-gray-700">Email</label>
-          <input 
-          type="email" 
-          className="w-full px-3 py-2 shadow-3xl rounded-2xl border-0 border-indigo-600 bg-indigo-100"
-          placeholder="Enter Email" 
-          onChange={(e) => setEmail(e.target.value)}
-          />
+    <div className="min-h-screen w-full bg-slate-50 flex items-center justify-center p-4 font-sans text-slate-800 antialiased">
+      <div className="w-full max-w-md bg-white border border-slate-200/60 p-8 rounded-2xl shadow-xl shadow-slate-200/50 space-y-6">
+      <div className="text-center space-y-2">
+          <h1 className="text-3xl font-extrabold tracking-tight text-violet-600">
+            Management System
+          </h1>
         </div>
-        <div className="mb-4">
-          <label htmlFor="password" className="block text-gray-700">Password</label>
-          <input 
-          type="password" 
-          className="w-full px-3 py-2 border-0 border-indigo-300 bg-indigo-100 rounded-2xl"
-          placeholder="******"
-          onChange={(e) => setPassword(e.target.value)}
-          />
+
+        <div className="relative flex py-2 items-center">
+          <div className="flex-grow border-t border-slate-100"></div>
+          <span className="flex-shrink mx-4 text-xs font-semibold text-slate-400 uppercase tracking-wider">
+            Login
+          </span>
+          <div className="flex-grow border-t border-slate-100"></div>
         </div>
-        <div className="mb-4 flex items-center justify-between">
-          <label className="inline-flex items-center">
-            <input type="checkbox" className="form-checkbox" />
-            <span className="ml-2 text-gray-700">Remember me</span>
-          </label>
-          <a href="#" className="text-cyan-600">
-            Forgot password?
-          </a>
-        </div>
-        <div className="mb-4">
+
+        {error && (
+          <div className="p-4 rounded-xl bg-rose-50 border border-rose-100 text-sm font-medium text-rose-600 animate-shake">
+            <span className="font-bold">Gagal masuk:</span> {error}
+          </div>
+        )}
+
+      <form onSubmit={handleSubmit} className="space-y-5">
+        <div className="space-y-1.5">
+            <label htmlFor="email" className="text-sm font-semibold text-slate-700">
+              Email Address
+            </label>
+            <input
+              id="email"
+              type="email"
+              value={email}
+              placeholder="admin@gmail.com"
+              onChange={(e) => setEmail(e.target.value)}
+              required
+              className="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm bg-slate-50/50 focus:outline-none focus:border-violet-500 focus:bg-white focus:ring-4 focus:ring-violet-100 transition-all placeholder:text-slate-300"
+            />
+          </div>
+
+          <div className="space-y-1.5">
+            <label htmlFor="password" className="text-sm font-semibold text-slate-700">
+              Password
+            </label>
+            <input
+              id="password"
+              type="password"
+              value={password}
+              placeholder="••••••••"
+              onChange={(e) => setPassword(e.target.value)}
+              required
+              className="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm bg-slate-50/50 focus:outline-none focus:border-violet-500 focus:bg-white focus:ring-4 focus:ring-violet-100 transition-all placeholder:text-slate-300"
+            />
+          </div>
+
+          <div className="flex items-center justify-between text-sm">
+            <label className="flex items-center gap-2 cursor-pointer select-none font-medium text-slate-600">
+              <input
+                type="checkbox"
+                className="w-4 h-4 rounded text-violet-600 border-slate-300 focus:ring-violet-500"
+              />
+              Remember me
+            </label>
+            <a
+              href="#"
+              className="font-semibold text-violet-600 hover:text-violet-700 transition-colors"
+            >
+              Forgot password?
+            </a>
+          </div>
+
+          {/* Tombol Submit Utama */}
           <button
-          type="submit"
-          className="w-full bg-cyan-600 text-white py-2 rounded-2xl"
-          >Login
+            type="submit"
+            className="w-full py-3 px-4 rounded-xl bg-violet-600 text-white font-bold text-sm shadow-md shadow-violet-200 hover:bg-violet-700 active:scale-[0.98] transition-all"
+          >
+            Sign In to Dashboard
           </button>
+        </form>
+
+        <div className="text-center pt-2">
+          <p className="text-xs text-slate-400 font-medium">
+            &copy; 2026 EMS. All rights reserved.
+          </p>
         </div>
-      </form>
       </div>
     </div>
-  )
+        
+      )
+
 }
+
+
+
+
+      
+      
 
 
 export default Login

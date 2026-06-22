@@ -69,11 +69,19 @@ const DepartmentList = () => {
         </div>
       </div>
     ) : (
-      <div className="p-4 md:p-8 bg-slate-50 min-h-screen">
+      <div className="md:p-8 mt-4
+      mx-6
+      items-center
+      justify-between rounded-2xl
+      bg-white
+      border
+      border-slate-200
+      p-6
+      shadow-sm min-h-screen">
 
         {/* Header */}
         <div className="mb-8">
-          <h1 className="text-3xl md:text-4xl font-bold text-slate-800">
+          <h1 className="text-2xl font-bold text-slate-800">
             Departments
           </h1>
 
@@ -100,9 +108,9 @@ const DepartmentList = () => {
 
           <div className="bg-white rounded-2xl shadow-sm p-5">
             <p className="text-slate-500">Status</p>
-            <h2 className="text-3xl font-bold text-cyan-600">
+            <h3 className="text-2xl font-bold text-cyan-600">
               Active
-            </h2>
+            </h3>
           </div>
         </div>
 

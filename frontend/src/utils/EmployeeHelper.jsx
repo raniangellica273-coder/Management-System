@@ -47,6 +47,49 @@ export const columns = [
     },
 ]
 
+export const fetchDepartment = async () => {
+      try {
+        const response = await axios.get('http://localhost:5000/api/department',
+          {
+          headers: {
+            "Authorization" : `Bearer ${localStorage.getItem('token')}`,
+          },
+        });
+        console.log("response.data=", response.data)
+        if(response.data.success) {
+          return response.data.department;
+        }
+        return[]
+      }catch(error) {
+         if(error.response && !error.response.data.success) {
+            alert(error.response.data.response)
+      }
+    } 
+
+    return departments
+};
+
+export const getEmployees = async (id) => {
+  let employees;
+      try {
+        const response = await axios.get(`http://localhost:5000/api/employee/department/${id}`,
+          {
+          headers: {
+            "Authorization" : `Bearer ${localStorage.getItem('token')}`,
+          },
+        });
+        if(response.data.success) {
+          employees = response.data.employees;
+        }
+      }catch(error) {
+         if(error.response && !error.response.data.success) {
+            alert(error.response.data.response)
+      }
+    } 
+
+    return employees
+};
+
 export const EmployeeButtons = ({ id }) => {
     const navigate = useNavigate();
 
@@ -78,24 +121,3 @@ export const EmployeeButtons = ({ id }) => {
       </div>
     )
 }
-export const fetchDepartment = async () => {
-      try {
-        const response = await axios.get('http://localhost:5000/api/department',
-          {
-          headers: {
-            "Authorization" : `Bearer ${localStorage.getItem('token')}`,
-          },
-        });
-        console.log("response.data=", response.data)
-        if(response.data.success) {
-          return response.data.department;
-        }
-        return[]
-      }catch(error) {
-         if(error.response && !error.response.data.success) {
-            alert(error.response.data.response)
-      }
-    } 
-
-    
-};
