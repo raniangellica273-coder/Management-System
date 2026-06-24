@@ -40,7 +40,7 @@ function App() {
           <Route path="/admin-dashboard/employee/:id" element={<View />}></Route>
           <Route path="/admin-dashboard/employee/edit/:id" element={<Edit />}></Route>
 
-          <Route path="/admin-dashboard/salary/add-salary/:id" element={<AddSalary />}></Route>
+          <Route path="/admin-dashboard/add-salary/:id" element={<AddSalary />}></Route>
 
         </Route>
       <Route path="/employee-dashboard" element={<EmployeeDashboard />}></Route>

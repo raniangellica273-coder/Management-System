@@ -37,7 +37,7 @@ return (
       <div className="max-w-4xl mx-auto mt-10 bg-white rounded-2xl shadow-lg overflow-hidden">
 
         {/* Header */}
-        <div className="h-32 bg-gradient-to-r from-indigo-600 to-purple-600"></div>
+        <div className="h-32 bg-blue-800"></div>
 
         {/* Profile Section */}
         <div className="flex flex-col items-center -mt-16">

@@ -96,7 +96,7 @@ export const EmployeeButtons = ({ id }) => {
     return (
       <div className="flex gap-2">
         <button
-        className="px-3 py-1 bg-indigo-700 text-white rounded text-sm"
+        className="px-3 py-1 bg-blue-700 text-white rounded text-sm"
         onClick={() => navigate(`/admin-dashboard/employee/${id}`)}>
           View
         </button>

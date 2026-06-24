@@ -45,10 +45,10 @@ const Navbar = () => {
       px-5
       py-3
       rounded-xl
-      bg-violet-600
+      bg-blue-600
       text-white
       font-medium
-      hover:bg-violet-700
+      hover:bg-blue-800
     ">
           Logout
         </button>

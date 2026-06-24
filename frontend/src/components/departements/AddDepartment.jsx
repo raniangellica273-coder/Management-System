@@ -75,7 +75,7 @@ const AddDepartment = () => {
 
         <button
         type="submit"
-        className="w-full mt-6 bg-indigo-700 hover:bg-indigo-500 text-white font-bold py-2 px-4 rounded"
+        className="w-full mt-6 bg-blue-700 hover:bg-blue-900 text-white font-bold py-2 px-4 rounded"
         >
         Add Department
         </button>

@@ -94,7 +94,7 @@ const DepartmentList = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-8">
           <div className="bg-white rounded-2xl shadow-sm p-5">
             <p className="text-slate-500">Total Departments</p>
-            <h2 className="text-3xl font-bold text-indigo-600">
+            <h2 className="text-3xl font-bold text-blue-600">
               {filteredDepartments.length}
             </h2>
           </div>
@@ -108,7 +108,7 @@ const DepartmentList = () => {
 
           <div className="bg-white rounded-2xl shadow-sm p-5">
             <p className="text-slate-500">Status</p>
-            <h3 className="text-2xl font-bold text-cyan-600">
+            <h3 className="text-2xl font-bold text-blue-600">
               Active
             </h3>
           </div>
@@ -138,7 +138,7 @@ const DepartmentList = () => {
                 border-slate-200
                 rounded-xl
                 focus:ring-2
-                focus:ring-indigo-500
+                focus:ring-blue-500
                 outline-none
               "
               onChange={filterDepartments}
@@ -149,8 +149,8 @@ const DepartmentList = () => {
               className="
                 w-full
                 md:w-auto
-                bg-indigo-600
-                hover:bg-indigo-700
+                bg-blue-600
+                hover:bg-blue-900
                 text-white
                 px-6
                 py-3

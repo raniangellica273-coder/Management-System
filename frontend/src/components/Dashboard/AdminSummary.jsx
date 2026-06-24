@@ -54,7 +54,7 @@ const AdminSummary = () => {
               <p className="text-sm font-medium text-slate-400">Total Departments</p>
               <p className="text-3xl font-extrabold text-slate-800">5</p>
             </div>
-            <div className="p-4 bg-indigo-50 text-indigo-600 rounded-2xl">
+            <div className="p-4 bg-indigo-50 text-blue-600 rounded-2xl">
               <FaBuilding className="w-6 h-6" />
             </div>
           </div>

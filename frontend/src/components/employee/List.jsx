@@ -67,6 +67,7 @@ const List = () => {
   return (
     <div className='md:p-6 border  border-slate-200 mt-4
       mx-6 items-center justify-between rounded-2xl p-6 shadow-md'>
+        
       <div className="mb-6">
         <h2 className="text-2xl font-bold text-gray-800">Manage Employee</h2>
       <p className='text-gray-500 mt-1'>Manage all Employee here</p>
@@ -96,7 +97,7 @@ const List = () => {
 
         <Link
           to="/admin-dashboard/add-employee"
-          className="px-5 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 shadow transition duration-300 text-center">
+          className="px-5 py-2 bg-blue-600 text-white rounded-lg hover:bg-indigo-700 shadow transition duration-300 text-center">
           + Add New Employee
         </Link>
       </div>
